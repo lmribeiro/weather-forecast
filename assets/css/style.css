@@ -1,0 +1,28 @@
+.unsplashed {
+    background-image: url(https://source.unsplash.com/category/nature);
+    background-size: 100%;
+    overflow: hidden;
+}
+.section .title-area {
+    max-width: 760px;
+    margin: 40px auto 20px;
+    display: block;
+    padding: 0 15px;
+    text-align: center;
+}
+#toTop{
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    cursor: pointer;
+    padding: 5px 17px 9px 8px;
+    display: none;
+    z-index: 1500!important;
+    border-radius: 50%;
+    border: 2px solid #bbb;
+    color: #bbb;
+}
+#toTop:hover{
+    border: 2px solid #E78B91;
+    color: #e78b90;
+}
