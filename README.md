@@ -28,5 +28,3 @@ To become familiar with Yahoo's weather API.
 
 ## Licence
 MIT. See [License](https://github.com/lmribeiro/weather-forecast/blob/master/LICENSE).
-=======
-Weather App using Yahoo's weather API.
