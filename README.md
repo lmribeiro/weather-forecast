@@ -16,7 +16,7 @@ To become familiar with Yahoo's weather API.
 
 
 ## Demo
-[See demo](https://lmribeiro.github.io/weather-forecast)
+See [demo](https://lmribeiro.github.io/weather-forecast) hosted by GitHub.
 
 
 ## Credits

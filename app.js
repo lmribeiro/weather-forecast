@@ -5,12 +5,13 @@ NS.App = (function () {
     var URL_API = "";
     var query = "";
     var geocoder = "";
-    
+
     // Initialize the application
     var init = function () {
         geocoder = new google.maps.Geocoder;
-        URL_API = 'https://query.yahooapis.com/v1/public/yql?q='
+        URL_API = 'https://query.yahooapis.com/v1/public/yql?q=';
         query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='%s') and u='c'&format=json";
+        NS.App.scroll();
         console.info('Application initialized...');
     };
 
@@ -150,13 +151,34 @@ NS.App = (function () {
         $('#error').modal("toggle");
     };
 
+    // Scroll to top
+    var scroll = function () {
+        // Scroll to top
+        $('body').append('<div id="toTop"><span class="fa fa-chevron-up fa-2x"></span></div>');
+        $(window).scroll(function () {
+            if ($(this).scrollTop() !== 0) {
+                $('#toTop').fadeIn();
+            } else {
+                $('#toTop').fadeOut();
+            }
+        });
+
+    };
+
+    // Share app
+    var share = function (url) {
+        window.open(url, '_blank');
+    };
+
     // Return the public facing methods for the App
     return {
         init: init,
         weatherGet: weatherGet,
         weatherSet: weatherSet,
         locationSuccess: locationSuccess,
-        locationError: locationError
+        locationError: locationError,
+        scroll: scroll,
+        share: share
     };
 
 }());
@@ -188,20 +210,24 @@ $('#location').click(function () {
     }
 });
 
+$('#facebook').click(function () {
+    var url = 'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href;
+    NS.App.share(url);
+});
+
+$('#twitter').click(function () {
+    var url = 'https://twitter.com/intent/tweet?url=' + window.location.href + '&text=' + encodeURIComponent("Weather Forecast App");
+    NS.App.share(url.replace('#', ''));
+});
+
+$('#toTop').click(function () {
+    $("html, body").animate({scrollTop: 0}, 600);
+    $('#term').focus();
+});
+
 $(function () {
     NS.App.init();
-
     new google.maps.places.SearchBox(document.getElementById('term'));
-
-    // Scroll to top
-    $('body').append('<div id="toTop"><span class="fa fa-chevron-up fa-2x"></span></div>');
-    $(window).scroll(function () {
-        if ($(this).scrollTop() !== 0) {
-            $('#toTop').fadeIn();
-        } else {
-            $('#toTop').fadeOut();
-        }
-    });
     $('#toTop').click(function () {
         $("html, body").animate({scrollTop: 0}, 600);
         $('#term').focus();
