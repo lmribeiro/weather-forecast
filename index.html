@@ -54,7 +54,7 @@
         <meta name="msapplication-TileImage" content="assets/img/favicon/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
 
-        <link href="assets/css/bootstrap.css" rel="stylesheet" />
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/css/gaia.css" rel="stylesheet"/>
         <link href="assets/css/style.css" rel="stylesheet"/>
 
@@ -190,55 +190,19 @@
             </div>
         </footer>
 
-        <!--Modals-->
-        <div class="modal fade" id="info" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"><i class="fa fa-info-circle"></i> Information</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            Unavailable weather information for "<span id="modalCity"></span>".
-                            <br/> 
-                            Please make sure you enter the city name correctly.
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="error" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> Error</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p id="errorMessage"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </body>
 
     <!--   core js files    -->
-    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.js" type="text/javascript"></script>
+    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!--  js library for devices recognition -->
-    <script type="text/javascript" src="assets/js/modernizr.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
     <!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
     <script type="text/javascript" src="assets/js/gaia.js"></script>
+    
+    <script type="text/javascript" src="assets/js/bootstrap-notify.js"></script>
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyAh_zrgh3iBv0DK41F7PweDeMH6ljP1ysc"></script>
 

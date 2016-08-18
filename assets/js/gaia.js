@@ -85,19 +85,6 @@ $(window).on('scroll',function(){
 
 });
 
-$('a[data-scroll="true"]').click(function(e){
-    var scroll_target = $(this).data('id');
-    var scroll_trigger = $(this).data('scroll');
-
-    if(scroll_trigger == true && scroll_target !== undefined){
-        e.preventDefault();
-
-        $('html, body').animate({
-             scrollTop: $(scroll_target).offset().top - 50
-        }, 1000);
-    }
-
-});
 
 gaia = {
     misc:{
@@ -109,7 +96,7 @@ gaia = {
             $toggle = $('.navbar-toggle');
             $toggle.click(function (){
 
-                if(gaia.misc.navbar_menu_visible == 1) {
+                if(gaia.misc.navbar_menu_visible === 1) {
                     $('html').removeClass('nav-open');
                     gaia.misc.navbar_menu_visible = 0;
                     $('#bodyClick').remove();
@@ -237,7 +224,7 @@ function isElementInViewport(elem) {
     var $elem = $(elem);
 
     // Get the scroll position of the page.
-    var scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
+    var scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') !== -1) ? 'body' : 'html');
     var viewportTop = $(scrollElem).scrollTop();
     var viewportBottom = viewportTop + $(window).height();
 

@@ -31,8 +31,7 @@ NS.App = (function () {
                     NS.App.weatherSet(data.query.results.channel);
 
                 } else {
-                    $("#modalCity").html(term);
-                    $('#info').modal("toggle");
+                    NS.App.notify('Unavailable weather information for "' + term + '".', 'danger');
                     $('#result').css({'display': 'none'});
                 }
                 $("#term").val('');
@@ -120,31 +119,28 @@ NS.App = (function () {
                     var location = results[1].formatted_address;
                     NS.App.weatherGet(location);
                 } else {
-                    $("#errorMessage").html('No results found');
-                    $('#error').modal("toggle");
+                    NS.App.notify('No results found', 'danger');
                 }
             } else {
-                $("#errorMessage").html('Geocoder failed due to: ' + status);
-                $('#error').modal("toggle");
+                NS.App.notify('Geocoder failed due to: ' + status, 'danger');
             }
         });
-
     };
 
     // On location error
     var locationError = function (error) {
         switch (error.code) {
             case error.TIMEOUT:
-                $("#errorMessage").html("A timeout occured! Please try again!");
+                NS.App.notify('A timeout occured! Please try again!', 'danger');
                 break;
             case error.POSITION_UNAVAILABLE:
-                $("#errorMessage").html('We can\'t detect your location!');
+                NS.App.notify('We can\'t detect your location!', 'danger');
                 break;
             case error.PERMISSION_DENIED:
-                $("#errorMessage").html('Please allow geolocation access for this to work.');
+                NS.App.notify('Please allow geolocation access for this to work.', 'danger');
                 break;
             case error.UNKNOWN_ERROR:
-                $("#errorMessage").html('An unknown error occured!');
+                NS.App.notify('An unknown error occured!', 'danger');
                 break;
         }
         $('#location').html('<i class="fa fa-location-arrow"></i> Use location');
@@ -162,12 +158,23 @@ NS.App = (function () {
                 $('#toTop').fadeOut();
             }
         });
-
     };
 
     // Share app
     var share = function (url) {
         window.open(url, '_blank');
+    };
+
+    //Notify
+    var notify = function (message, type) {
+        $.notify({
+            icon: 'fa fa-bell',
+            message: message
+
+        }, {
+            type: type,
+            timer: 3000
+        });
     };
 
     // Return the public facing methods for the App
@@ -178,7 +185,8 @@ NS.App = (function () {
         locationSuccess: locationSuccess,
         locationError: locationError,
         scroll: scroll,
-        share: share
+        share: share,
+        notify: notify
     };
 
 }());
@@ -205,8 +213,7 @@ $('#location').click(function () {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(NS.App.locationSuccess, NS.App.locationError);
     } else {
-        $("#errorMessage").html("Your browser does not support Geolocation!");
-        $('#error').modal("toggle");
+        NS.App.notify('Your browser does not support Geolocation!', 'danger');
     }
 });
 
@@ -218,11 +225,6 @@ $('#facebook').click(function () {
 $('#twitter').click(function () {
     var url = 'https://twitter.com/intent/tweet?url=' + window.location.href + '&text=' + encodeURIComponent("Weather Forecast App");
     NS.App.share(url.replace('#', ''));
-});
-
-$('#toTop').click(function () {
-    $("html, body").animate({scrollTop: 0}, 600);
-    $('#term').focus();
 });
 
 $(function () {
