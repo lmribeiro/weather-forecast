@@ -12,17 +12,14 @@
 }
 #toTop{
     position: fixed;
-    bottom: 12px;
+    bottom: 22px;
     right: 12px;
     cursor: pointer;
-    padding: 5px 17px 9px 8px;
+    padding: 0px 13px 0px 0px;
     display: none;
     z-index: 1500!important;
-    border-radius: 50%;
-    border: 2px solid #bbb;
     color: #bbb;
 }
 #toTop:hover{
-    border: 2px solid #E78B91;
     color: #e78b90;
 }
