@@ -98,6 +98,7 @@
                                 <li>
                                     <a href="#" id="twitter"><i class="fa fa-twitter"></i> Twitter</a>
                                 </li>
+                                <li id="egoi-wp-2100ed8be892a4e2e0829f58cd914840"></li>
                             </ul>
                         </li>
                     </ul>
@@ -215,4 +216,24 @@
       ga('send', 'pageview');
 
     </script>
+    <script type="text/javascript">
+   var _egoiwp = _egoiwp || {};
+   (function(){
+   var u="https://cdn-static.dev-egoiapp2.com/";
+   _egoiwp.code = "2100ed8be892a4e2e0829f58cd914840";
+   var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+   g.type='text/javascript';
+   g.defer=true;
+   g.async=true;
+   g.src=u+'webpush.js';
+   s.parentNode.insertBefore(g,s);
+   })();
+   function sw() {
+   let a = document.getElementById(_egoiwp.code), s = a.getAttribute('style');
+   let n = s.indexOf("block"), st;
+   if (n > 0) { st = s.replace('block', 'none');
+   } else { st = s.replace('none', 'block');}
+   a.setAttribute('style', st);
+   }
+   </script>
 </html>
